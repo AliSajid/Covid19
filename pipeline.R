@@ -20,7 +20,7 @@ get_l1000_signature <- function(signature_id) {
   }
 }
 
-get_concordant_signatures <- function(signature_file, signature_df) {
+get_concordant_signatures <- function(signature_file, signature_df, library = "LIB_5") {
   if (missing(signature_file)) {
     if (missing(signature_df)) {
       stop("Either signature_file or a data-frame with the signature should be supplied")
@@ -35,7 +35,7 @@ get_concordant_signatures <- function(signature_file, signature_df) {
   }
   
   url <- "http://www.ilincs.org/api/SignatureMeta/uploadAndAnalyze"
-  query = list(lib = "LIB_5")
+  query = list(lib = library)
   body = list(file = upload_file(signature_file))
   
   request <- POST(url, query = query, body = body)
