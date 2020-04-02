@@ -14,7 +14,7 @@ MCF7_signatures <- read_tsv("MCF7-Drug-Signature_Map.tsv") %>% select(SignatureI
 
 # Process Signatures for HA1E Cell Lines
 if (!dir.exists(raw_prefix[1])) {
-  dir.create(raw_prefix[1])
+  dir.create(raw_prefix[1], recursive = T)
 }
 
 for (index in 1:dim(HA1E_signatures)[1]) {
@@ -27,7 +27,7 @@ for (index in 1:dim(HA1E_signatures)[1]) {
 
 # Process Signatures for MCF7 Cell Lines
 if (!dir.exists(raw_prefix[2])) {
-  dir.create(raw_prefix[2])
+  dir.create(raw_prefix[2], recursive = T)
 }
 
 for (index in 1:dim(MCF7_signatures)[1]) {
