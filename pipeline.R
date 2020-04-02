@@ -176,3 +176,10 @@ combine_results <- function(x, y, prefix = NULL) {
   write_csv(d, path)
   invisible(d)
 }
+
+generate_name <- function(prefix, filename, extension) {
+  name <- paste(filename, extension, sep = ".")
+  output <- paste(prefix, name, sep = "/")
+  return(output)
+}
+
