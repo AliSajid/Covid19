@@ -85,7 +85,7 @@ generate_filtered_signature <- function(signature_df, signature_file, direction,
   }
   
   result <- result %>% 
-    select(ID_geneid, Name_GeneSymbol, Value_LogDiffExp, Significance_pvalue)
+    select_if(names(.) %in% c("ID_geneid", "Name_GeneSymbol", "Value_LogDiffExp", "Significance_pvalue"))
   
   return(result)
 }
