@@ -1,0 +1,34 @@
+SignatureId	Perturbagen	GeneTargets	Concentration	CellLine	Time	is_exemplar
+LINCSCP_11565	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	ASC	24h	1
+LINCSCP_12388	2-(4-Nitro-phenylamino)-benzoic acid		1uM	CD34	24h	0
+LINCSCP_12389	2-(4-Nitro-phenylamino)-benzoic acid		3uM	CD34	24h	0
+LINCSCP_12486	2-(4-Nitro-phenylamino)-benzoic acid		0.5uM	CD34	6h	0
+LINCSCP_12487	2-(4-Nitro-phenylamino)-benzoic acid		1uM	CD34	6h	0
+LINCSCP_12488	2-(4-Nitro-phenylamino)-benzoic acid		3uM	CD34	6h	1
+LINCSCP_14079	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	HA1E	24h	0
+LINCSCP_14259	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	HA1E	6h	1
+LINCSCP_159806	Tolfenamic acid		10uM	PC3	24h	
+LINCSCP_159810	Tolfenamic acid		0.12uM	PC3	24h	
+LINCSCP_173399	Tolfenamic acid		10uM	YAPC	24h	
+LINCSCP_173400	Tolfenamic acid		3.33uM	YAPC	24h	
+LINCSCP_222190	2-(4-Nitro-phenylamino)-benzoic acid		10uM	HL60	24h	0
+LINCSCP_222191	2-(4-Nitro-phenylamino)-benzoic acid		1uM	HL60	24h	0
+LINCSCP_24147	2-(4-Nitro-phenylamino)-benzoic acid		3uM	HL60	24h	0
+LINCSCP_24202	2-(4-Nitro-phenylamino)-benzoic acid		10uM	HL60	6h	0
+LINCSCP_24203	2-(4-Nitro-phenylamino)-benzoic acid		3uM	HL60	6h	1
+LINCSCP_243475	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	MCF7	24h	0
+LINCSCP_289830	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	VCAP	6h	1
+LINCSCP_33634	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	MCF7	24h	0
+LINCSCP_43882	2-(4-Nitro-phenylamino)-benzoic acid		0.5uM	PC3	6h	0
+LINCSCP_43883	2-(4-Nitro-phenylamino)-benzoic acid		1uM	PC3	6h	0
+LINCSCP_43884	2-(4-Nitro-phenylamino)-benzoic acid		3uM	PC3	6h	1
+LINCSCP_44228	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	PC3	24h	0
+LINCSCP_50221	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	PHH	24h	1
+LINCSCP_52898	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	SKB	24h	1
+LINCSCP_55326	2-(4-Nitro-phenylamino)-benzoic acid		3uM	U937	24h	0
+LINCSCP_55394	2-(4-Nitro-phenylamino)-benzoic acid		0.5uM	U937	6h	0
+LINCSCP_55395	2-(4-Nitro-phenylamino)-benzoic acid		1uM	U937	6h	0
+LINCSCP_55396	2-(4-Nitro-phenylamino)-benzoic acid		3uM	U937	6h	1
+LINCSCP_55993	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	VCAP	24h	0
+LINCSCP_7602	Flufenamic acid	AKR1C3|AR|PTGS1|PTGS2	10uM	A549	24h	0
+LINCSCP_96393	Tolfenamic acid		0.37uM	HA1E	24h	

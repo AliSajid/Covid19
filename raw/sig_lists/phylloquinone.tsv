@@ -1,0 +1,24 @@
+SignatureId	Perturbagen	GeneTargets	Concentration	CellLine	Time	is_exemplar
+LINCSCP_104914	phylloquinone		10uM	HELA	24h	
+LINCSCP_104915	phylloquinone		3.33uM	HELA	24h	
+LINCSCP_104916	phylloquinone		1.11uM	HELA	24h	
+LINCSCP_104918	phylloquinone		0.12uM	HELA	24h	
+LINCSCP_121711	phylloquinone		1.11uM	HT29	24h	
+LINCSCP_138290	phylloquinone		1.11uM	MCF7	24h	
+LINCSCP_138291	phylloquinone		0.37uM	MCF7	24h	
+LINCSCP_138293	phylloquinone		0.04uM	MCF7	24h	
+LINCSCP_156492	phylloquinone		10uM	PC3	24h	
+LINCSCP_156494	phylloquinone		1.11uM	PC3	24h	
+LINCSCP_156495	phylloquinone		0.37uM	PC3	24h	
+LINCSCP_170098	phylloquinone		0.12uM	YAPC	24h	
+LINCSCP_20703	Phylloquinone		10uM	HCC515	6h	1
+LINCSCP_271953	Phylloquinone		10uM	PC3	24h	0
+LINCSCP_296199	Phylloquinone		10uM	VCAP	6h	1
+LINCSCP_3062	Phylloquinone		10uM	A375	6h	1
+LINCSCP_47371	Phylloquinone		10uM	PC3	6h	1
+LINCSCP_59434	Phylloquinone		10uM	VCAP	24h	0
+LINCSCP_74763	phylloquinone		0.04uM	A375	24h	
+LINCSCP_93105	phylloquinone		3.33uM	HA1E	24h	
+LINCSCP_93107	phylloquinone		0.37uM	HA1E	24h	
+LINCSCP_93108	phylloquinone		0.12uM	HA1E	24h	
+LINCSCP_93109	phylloquinone		0.04uM	HA1E	24h	
