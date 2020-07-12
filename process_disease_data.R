@@ -1,9 +1,10 @@
 library(tidyverse)
 source("pipeline.R")
 
-cutoffs <- c(0, 0.26, 0.5)
+cutoffs <- c(0, 0.26, 0.5, 0.85, 1)
 
-diseases <- c("influenza", "mers", "sars", "covidc", "covidm")
+diseases <- c("influenza", "mers", "sars", "covidc", "covidm", "dNHBE_1",
+              "dA549_2", "dA549_3", "dA549_p", "dACE2_4", "dCalu3_5")
 
 cell_lines <- c("HA1E", "MCF7")
 

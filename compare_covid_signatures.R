@@ -27,12 +27,12 @@ for (drug in files) {
 
 covidc <- read_tsv("dataset/disease/covidc/covidc-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
 covidm <- read_tsv("dataset/disease/covidm/covidm-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
-dNHBE_1 <- read_tsv("dataset/disease/dNHBE_1/dNHBE_1_l1000_de.tsv") %>% arrange(Name_GeneSymbol)
-dA549_2 <- read_tsv("dataset/disease/dA549_2/dA549_2_l1000_de.tsv") %>% arrange(Name_GeneSymbol)
-dA549_3 <- read_tsv("dataset/disease/dA549_3/dA549_3_l1000_de.tsv") %>% arrange(Name_GeneSymbol)
-dA549_p <- read_tsv("dataset/disease/dA549_p/dA549_p_l1000_de.tsv") %>% arrange(Name_GeneSymbol)
-dACE2_4 <- read_tsv("dataset/disease/dACE2_4/dACE2_4_l1000_de.tsv") %>% arrange(Name_GeneSymbol)
-dCalu3_5 <- read_tsv("dataset/disease/dCalu3_5/dCalu3_5_l1000_de.tsv") %>% arrange(Name_GeneSymbol)
+dNHBE_1 <- read_tsv("dataset/disease/dNHBE_1/dNHBE_1-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
+dA549_2 <- read_tsv("dataset/disease/dA549_2/dA549_2-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
+dA549_3 <- read_tsv("dataset/disease/dA549_3/dA549_3-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
+dA549_p <- read_tsv("dataset/disease/dA549_p/dA549_p-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
+dACE2_4 <- read_tsv("dataset/disease/dACE2_4/dACE2_4-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
+dCalu3_5 <- read_tsv("dataset/disease/dCalu3_5/dCalu3_5-l1000-signature.tsv") %>% arrange(Name_GeneSymbol)
 
 get_correlation <- function(covid, drug, threshold = 0) {
   c <- covid %>% 
@@ -124,6 +124,8 @@ cor_data <- tibble(signature = sig,
                    ACE2_4_cor = dACE2_4_cor,
                    Calu3_5_cor = dCalu3_5_cor)
 
+cor_data %>% write_csv(file.path("results", "covid_cor_data_all.csv"))
+
 cor_analysis <- cor_data %>% 
   group_by(perturbagen, threshold) %>% 
   summarize(pos_m = sum(mtsinai_cor > 0), 
@@ -182,32 +184,32 @@ cor_analysis <- cor_data %>%
          )
 
 cor_analysis %>% 
-  write_csv("results/covid_cor_analysis.csv")
+  write_csv("results/covid_cor_analysis_all.csv")
 
 cor_min <- cor_analysis %>% 
   select(perturbagen, threshold, starts_with("min"))
 
-cor_min %>% write_csv("results/covid_cor_min_analysis.csv")
+cor_min %>% write_csv("results/covid_cor_analysis_min.csv")
 
 cor_max <- cor_analysis %>% 
   select(perturbagen, threshold,  starts_with("max"))
 
-cor_max %>% write_csv("results/covid_cor_max_analysis.csv")
+cor_max %>% write_csv("results/covid_cor_analysis_max.csv")
 
 cor_mean <- cor_analysis %>% 
   select(perturbagen, threshold,  starts_with("mean"))
 
-cor_mean %>% write_csv("results/covid_cor_mean_analysis.csv")
+cor_mean %>% write_csv("results/covid_cor_analysis_mean.csv")
 
 cor_sd <- cor_analysis %>% 
   select(perturbagen, threshold,  starts_with("sd"))
 
-cor_sd %>% write_csv("results/covid_cor_sd_analysis.csv")
+cor_sd %>% write_csv("results/covid_cor_analysis_sd.csv")
 
 cor_ratio <- cor_analysis %>% 
   select(perturbagen, threshold,  ends_with("ratio"))
 
-cor_ratio %>% write_csv("results/covid_cor_ratio_analysis.csv")
+cor_ratio %>% write_csv("results/covid_cor_analysis_ratio.csv")
 
 cor_min %>% 
   pivot_longer(starts_with("min"), names_to = "sample", values_to = "concordance") %>% 
