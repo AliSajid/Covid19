@@ -1,4 +1,5 @@
 library(tidyverse)
+library(RColorBrewer)
 
 data <- read_csv("results/covid_cor_analysis_min.csv") %>% 
   select(perturbagen, threshold, min_n1, min_a2) %>% 
@@ -45,11 +46,22 @@ p2 <- p2 + geom_point() +
 ggsave(file.path("figures", "covid_drug_0.85_concordance.png"), plot = p2)
 ggsave(file.path("figures", "covid_drug_0.85_concordance.pdf"), plot = p2)
 
+special <-
+  c("Niclosamide",
+    "Ruxolitinib",
+    "Sirolimus",
+    "Valsartan",
+    "Everolimus",
+    "Ivermectin",
+    "Sitagliptin")
+
 p3 <- data %>% 
   filter(threshold == 0.85) %>% 
   select(perturbagen, min_a2) %>%
-  mutate(passed = min_a2 < -0.321) %>% 
-  ggplot(data = ., mapping = aes(x = perturbagen, y = min_a2, color = passed))
+  mutate(passed = if_else(min_a2 < -0.321, "yes", "no"),
+         passed = if_else(perturbagen %in% special, "special", passed)) %>% 
+  arrange(min_a2) %>% 
+  ggplot(data = ., mapping = aes(x = perturbagen, y = min_a2, color = passed, shape = passed))
 
 p3 <- p3 + geom_point() +
   coord_flip() +
@@ -57,8 +69,16 @@ p3 <- p3 + geom_point() +
   xlab("Drugs") +
   ylab("Concordance") +
   theme_bw() + 
+  scale_x_discrete(breaks = sort(data$perturbagen, decreasing = T)) +
   scale_y_continuous(breaks = seq(-1, 0, by = 0.05)) +
-  scale_color_brewer(palette = "Set2", name = "Concordance < -0.321", labels = c("No", "Yes")) +
+  scale_shape_manual(name = element_blank(),
+                     values = c(16, 1, 17),
+                     breaks = c("yes", "no", "special"),
+                     labels = c("Passed Threshold", "Did Not Pass Threshold", "Special Consideration")) +
+  scale_color_brewer(name = element_blank(),
+                     palette = "Dark2",
+                     labels = c("Passed Threshold", "Did Not Pass Threshold", "Special Consideration"),
+                     breaks = c("yes", "no", "special")) +
   ggtitle("Plot of Concordance Scores for A549") +
   theme(
     plot.title = element_text(hjust = 0.5)
@@ -70,8 +90,9 @@ ggsave(file.path("figures", "covid_drug_A549_0.85_concordance.pdf"), plot = p3, 
 p4 <- data %>% 
   filter(threshold == 0.85) %>% 
   select(perturbagen, min_n1) %>%
-  mutate(passed = min_n1 < -0.321) %>% 
-  ggplot(data = ., mapping = aes(x = perturbagen, y = min_n1, color = passed))
+  mutate(passed = min_n1 < -0.321,
+         special = perturbagen %in% special) %>% 
+  ggplot(data = ., mapping = aes(x = perturbagen, y = min_n1, color = passed, shape = special))
 
 p4 <- p4 + geom_point() +
   coord_flip() +
@@ -81,6 +102,7 @@ p4 <- p4 + geom_point() +
   theme_bw() + 
   scale_y_continuous(breaks = seq(-1, 0, by = 0.05)) +
   scale_color_brewer(palette = "Set2", name = "Concordance < -0.321", labels = c("No", "Yes")) +
+  scale_shape_manual(values = c(TRUE, FALSE), name = "In clinical trial?", labels = c("Yes", "No")) +
   ggtitle("Plot of Concordance Scores for NHBE") +
   theme(
     plot.title = element_text(hjust = 0.5)
