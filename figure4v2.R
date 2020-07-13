@@ -55,5 +55,5 @@ mp <- p + geom_point() +
 
 mp
 
-ggsave(file.path("figures", "covid_drug_A549_0.85_concordance.png"), plot = mp, height = 11.8, width = 11.8)
-ggsave(file.path("figures", "covid_drug_A549_0.85_concordance.pdf"), plot = mp, height = 11.8, width = 11.8)
+ggsave(file.path("figures", "covid_drug_A549_0.85_concordance.png"), plot = mp, height = 14.8, width = 11.8)
+ggsave(file.path("figures", "covid_drug_A549_0.85_concordance.pdf"), plot = mp, height = 14.8, width = 11.8)
