@@ -31,6 +31,8 @@ HA1E_groups <- c("quine_group_ha1e", "nib_group_ha1e", "vir_group_ha1e",
 MCF7_groups <- c("quine_group_mcf7", "nib_group_mcf7", "vir_group_mcf7",
                  "l01xe_group_mcf7", "azt_group_mcf7", "los_group_mcf7")
 
+cutoffs <- c(0, 0.26, 0.5, 0.85, 1)
+
 transform_name_to_signatureid <- function(drug_name, cell_line) {
   name_map_file <- paste(cell_line, "Drug-Signature_Map.tsv", sep = "-")
   result <- read_tsv(name_map_file) %>%
@@ -94,30 +96,36 @@ if (!dir.exists(concordant_prefix[1])) {
 }
 
 for (index in 1:length(HA1E_groups)) {
+  
+  print(paste("Processing", HA1E_groups[index]))
+  
+  for (cutoff in cutoffs) {
+    
+  print(paste("Processing", cutoff))
   group <- HA1E_groups[index]
   name <- str_extract(group, "[A-Za-z]*")
   members <- get(group)
   
   raw_output_file_name <- generate_name(raw_prefix[1], paste("Group", str_to_title(name),
                                                          "l1000", "signature", sep = "-"), "tsv")
-  up_output_file_name <- generate_name(up_prefix[1], paste("Group", str_to_title(name),
+  up_output_file_name <- generate_name(up_prefix[1], paste("Group", str_to_title(name), cutoff,
                                                              "l1000", "up", "signature", sep = "-"), "tsv")
-  down_output_file_name <- generate_name(down_prefix[1], paste("Group", str_to_title(name),
+  down_output_file_name <- generate_name(down_prefix[1], paste("Group", str_to_title(name), cutoff,
                                                              "l1000", "down", "signature", sep = "-"), "tsv")
-  concordant_up_output_file_name <- generate_name(concordant_prefix[1], paste("Group", str_to_title(name),
+  concordant_up_output_file_name <- generate_name(concordant_prefix[1], paste("Group", str_to_title(name), cutoff,
                                                                               "l1000", "concordant", "up", "connected", sep = "-"), "tsv")
-  concordant_down_output_file_name <- generate_name(concordant_prefix[1], paste("Group", str_to_title(name),
+  concordant_down_output_file_name <- generate_name(concordant_prefix[1], paste("Group", str_to_title(name), cutoff,
                                                                               "l1000", "concordant", "down", "connected", sep = "-"), "tsv")
-  consensus_output_file_name <- generate_name(consensus_prefix[1], paste("Group", str_to_title(name),
+  consensus_output_file_name <- generate_name(consensus_prefix[1], paste("Group", str_to_title(name), cutoff,
                                                              "l1000", "consensus", "connected", sep = "-"), "tsv")
   group_data <- get_group_data(members, "HA1E")
   avg_data <- average_data(group_data)
   write_tsv(avg_data, raw_output_file_name)
   
-  up_data <- generate_filtered_signature(avg_data, direction = "up")
+  up_data <- generate_filtered_signature(avg_data, direction = "up", threshold = cutoff)
   write_tsv(up_data, up_output_file_name)
   
-  down_data <- generate_filtered_signature(avg_data, direction = "down")
+  down_data <- generate_filtered_signature(avg_data, direction = "down", threshold = cutoff)
   write_tsv(down_data, down_output_file_name)
   
   
@@ -128,6 +136,7 @@ for (index in 1:length(HA1E_groups)) {
   
   consensus <- generate_consensus_signature(up_concordant, down_concordant, cell_line = "HA1E")
   write_tsv(consensus, consensus_output_file_name)
+  }
 }
 
 # Process Signatures for MCF7 Cell Lines
@@ -152,30 +161,33 @@ if (!dir.exists(concordant_prefix[2])) {
 }
 
 for (index in 1:length(MCF7_groups)) {
+  print(paste("Processing", MCF7_groups[index]))
+  for (cutoff in cutoffs) {
+    print(paste("Processing", cutoff))
   group <- MCF7_groups[index]
   name <- str_extract(group, "[A-Za-z]*")
   members <- get(group)
   
   raw_output_file_name <- generate_name(raw_prefix[2], paste("Group", str_to_title(name),
                                                              "l1000", "signature", sep = "-"), "tsv")
-  up_output_file_name <- generate_name(up_prefix[2], paste("Group", str_to_title(name),
+  up_output_file_name <- generate_name(up_prefix[2], paste("Group", str_to_title(name), cutoff,
                                                            "l1000", "up", "signature", sep = "-"), "tsv")
-  down_output_file_name <- generate_name(down_prefix[2], paste("Group", str_to_title(name),
+  down_output_file_name <- generate_name(down_prefix[2], paste("Group", str_to_title(name), cutoff,
                                                                "l1000", "down", "signature", sep = "-"), "tsv")
-  concordant_up_output_file_name <- generate_name(concordant_prefix[2], paste("Group", str_to_title(name),
+  concordant_up_output_file_name <- generate_name(concordant_prefix[2], paste("Group", str_to_title(name), cutoff,
                                                                               "l1000", "concordant", "up", "connected", sep = "-"), "tsv")
-  concordant_down_output_file_name <- generate_name(concordant_prefix[2], paste("Group", str_to_title(name),
+  concordant_down_output_file_name <- generate_name(concordant_prefix[2], paste("Group", str_to_title(name), cutoff,
                                                                                 "l1000", "concordant", "down", "connected", sep = "-"), "tsv")
-  consensus_output_file_name <- generate_name(consensus_prefix[2], paste("Group", str_to_title(name),
+  consensus_output_file_name <- generate_name(consensus_prefix[2], paste("Group", str_to_title(name), cutoff,
                                                                          "l1000", "consensus", "connected", sep = "-"), "tsv")
   group_data <- get_group_data(members, "MCF7")
   avg_data <- average_data(group_data)
   write_tsv(avg_data, raw_output_file_name)
   
-  up_data <- generate_filtered_signature(avg_data, direction = "up")
+  up_data <- generate_filtered_signature(avg_data, direction = "up", threshold = cutoff)
   write_tsv(up_data, up_output_file_name)
   
-  down_data <- generate_filtered_signature(avg_data, direction = "down")
+  down_data <- generate_filtered_signature(avg_data, direction = "down", threshold = cutoff)
   write_tsv(down_data, down_output_file_name)
   
   
@@ -186,5 +198,6 @@ for (index in 1:length(MCF7_groups)) {
   
   consensus <- generate_consensus_signature(up_concordant, down_concordant, cell_line = "MCF7")
   write_tsv(consensus, consensus_output_file_name)
+  }
 }
 
