@@ -127,6 +127,6 @@ for (index in 1:dim(MCF7_signatures)[1]) {
   write_tsv(up_concordant, outfile_concordant_up)
   write_tsv(down_concordant, outfile_concordant_down)
   
-  consensus <- generate_consensus_signature(up_concordant, down_concordant, cell_line = "HA1E")
+  consensus <- generate_consensus_signature(up_concordant, down_concordant, cell_line = "MCF7")
   write_tsv(consensus, outfile_consensus)
 }

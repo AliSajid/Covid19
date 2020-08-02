@@ -1,3 +1,5 @@
+# This file processes the disease data and generates consensus concordants
+
 library(tidyverse)
 source("pipeline.R")
 

@@ -111,14 +111,14 @@ generate_consensus_signature <- function(up_result, down_result,
   
   if (discordant) {
     result <- data %>% 
-      filter(similarity < -cutoff) %>% 
+      filter(similarity <= -cutoff) %>% 
       group_by(compound) %>%
       filter(similarity == max(similarity)) %>%
       ungroup() %>%
       select(signatureid, compound, similarity)
   } else {
     result <- data %>% 
-      filter(similarity > cutoff) %>% 
+      filter(similarity >= cutoff) %>% 
       group_by(compound) %>%
       filter(similarity == max(similarity)) %>%
       ungroup() %>%

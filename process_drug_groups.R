@@ -63,11 +63,11 @@ get_group_data <- function(members, cell_line) {
 
 average_data <- function(dfs) {
   reduced <- reduce(dfs, inner_join, by = "Name_GeneSymbol")
-  symbols <- reduced$Name_GeneSymbol
   avg_logexp <- reduced %>% 
-    select(starts_with("Value")) %>% 
-    rowMeans()
-  avged <- tibble(Name_GeneSymbol = symbols,
+    select(Name_GeneSymbol, starts_with("Value")) %>% 
+    column_to_rownames("Name_GeneSymbol") %>% 
+    rowMeans(na.rm = T)
+  avged <- tibble(Name_GeneSymbol = names(avg_logexp),
                   Value_LogDiffExp = avg_logexp)
   return(avged)
 }
