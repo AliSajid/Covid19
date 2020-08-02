@@ -9,3 +9,4 @@ Junk/
 GSEProcessing/
 *.zip
 data/
+packrat/lib*/
