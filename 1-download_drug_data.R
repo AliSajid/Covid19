@@ -27,7 +27,7 @@ process_perturbagen <- function(pertid, threshold = 0.85, library = "LIB_5", cel
 
   name_sig <- paste(pertid, "signature", sep = "-")
   name_filtered <- paste(pertid, threshold, "filtered", sep = "-")
-  name_connected <- paste(pertid, threshold, "filtered", sep = "-")
+  name_connected <- paste(pertid, threshold, "connected", sep = "-")
   name_consensus <- paste(pertid, threshold, "consensus", sep = "-")
 
   file_sig <- generate_name(sig_path, name_sig, "tsv")

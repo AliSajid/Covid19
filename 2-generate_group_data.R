@@ -44,9 +44,9 @@ process_group <- function(members, name, signature_map, cell_line, threshold = 0
   connected_down_path <- file.path(basepath, "connected", "group", "down")
   consensus_path <- file.path(basepath, "consensus", "group")
 
-  name_sig <- paste(name, "signature", sep = "-")
+  name_sig <- paste(name, cell_line, "signature", sep = "-")
   name_filtered <- paste(name, threshold, "filtered", sep = "-")
-  name_connected <- paste(name, threshold, "filtered", sep = "-")
+  name_connected <- paste(name, threshold, "connected", sep = "-")
   name_consensus <- paste(name, threshold, "consensus", sep = "-")
 
   file_sig <- generate_name(sig_path, name_sig, "tsv")
