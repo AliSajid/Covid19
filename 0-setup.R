@@ -65,6 +65,8 @@ diseases_connected_up <- file.path(diseases_connected, "up")
 diseases_connected_down <- file.path(diseases_connected, "down")
 
 diseases_consensus <- file.path(diseases_dirs, "consensus")
+diseases_consensus_ha1e <- file.path(diseases_consensus, "HA1E")
+diseases_consensus_mcf7 <- file.path(diseases_consensus, "MCF7")
 
 figures_dir <- file.path("figures")
 
@@ -86,6 +88,7 @@ all_dirs <- c(signatures_subdirs, figures_dir, results_dir,
               mcf7_filtered_group_up_dir, mcf7_filtered_group_down_dir,
               mcf7_connected_drug_up_dir, mcf7_connected_drug_down_dir,
               mcf7_connected_group_up_dir, mcf7_connected_group_down_dir,
-              mcf7_consensus_group_dir, mcf7_consensus_drug_dir)
+              mcf7_consensus_group_dir, mcf7_consensus_drug_dir,
+              diseases_consensus_ha1e, diseases_consensus_mcf7)
 
 sapply(all_dirs, create_dir)
