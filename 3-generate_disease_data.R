@@ -30,8 +30,12 @@ process_disease <- function(disease, threshold = 0.85, library = "LIB_5", cell_l
   file_connected_down <- generate_name(connected_down_path, name_connected, "tsv")
   file_consensus <- generate_name(consensus_path, name_consensus, "tsv")
 
+  src_path <- file.path("raw")
+  src_file <- generate_name(src_path, name_sig, "tsv")
+
   print(glue("Processing {disease} for threshold {threshold} and cell line {cell_line}"))
-  sig <- read_tsv(file_sig)
+  sig <- read_tsv(src_file) %>%
+    write_tsv(file_sig)
 
   print(glue("Generating filtered signatures for {disease}"))
   filtered_up <- generate_filtered_signature(sig, direction = "up", threshold = threshold)
