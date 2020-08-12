@@ -23,7 +23,8 @@ process_diseases: 3-generate_disease_data.R
 	$(RS) 3-generate_disease_data.R
 
 analyse: 4-generate_common_perturbagens.R
-	$(RS) 4-generate_common_perturbagens.R
+	$(RS) 4-generate_common_perturbagens_sars.R
+	$(RS) 5-generate_common_perturbagens_sars2.R
 
 visualise:
 	echo "Visualizations To Be Generated"
