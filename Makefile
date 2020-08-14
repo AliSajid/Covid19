@@ -22,11 +22,11 @@ process_groups: 2-generate_group_data.R
 process_diseases: 3-generate_disease_data.R
 	$(RS) 3-generate_disease_data.R
 
-analyse: 4-generate_common_perturbagens.R
+analyse: 4-generate_common_perturbagens_sars*.R
 	$(RS) 4-generate_common_perturbagens_sars.R
 	$(RS) 5-generate_common_perturbagens_sars2.R
 
 visualise:
 	echo "Visualizations To Be Generated"
 
-all: process_drugs process_groups process_disease analyse visualise
+all: process_drugs process_groups process_diseases analyse visualise
