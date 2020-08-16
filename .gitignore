@@ -2,10 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
-figures/
-ilincs_api/
-Junk/
 .DS_Store
-GSEProcessing/
 *.zip
-data/
+packrat/lib*/
+exp-*
+x-*
+~*
+*xlsx
+scratch/
