@@ -1,6 +1,7 @@
 library(tidyverse)
 library(RColorBrewer)
 library(extrafont)
+#library(Cairo)
 
 loadfonts()
 
@@ -43,11 +44,11 @@ bp <- p +
 fp <- bp +
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 30, family = "Arial", hjust = 0.5),
-    axis.title = element_text(size = 30, family = "Arial"),
-    axis.text = element_text(size = 24, family = "Arial"),
-    legend.text = element_text(size = 24, family = "Arial"),
-    legend.title = element_text(size = 24, family = "Arial"),
+    plot.title = element_text(size = 30, family = "ArialMT", hjust = 0.5),
+    axis.title = element_text(size = 30, family = "ArialMT"),
+    axis.text = element_text(size = 24, family = "ArialMT"),
+    legend.text = element_text(size = 24, family = "ArialMT"),
+    legend.title = element_text(size = 24, family = "ArialMT"),
     legend.key = element_rect(color = NA, fill = NA),
     legend.key.size = unit(1.5, "cm")
   ) +
