@@ -31,8 +31,8 @@ analyse: 4-*.R
 	$(RS) 4-generate_sars_sars2_combined_list.R
 
 visualise: f-*.R
-	$(RS) f-generate_concorddance_scatterplot-sars.R
-	$(RS) f-generate_concorddance_scatterplot-sars2.R
-	$(RS) f-generate_threshold_histogram.R
+	$(RS) f-generate_concordance_scatterplot-sars.R
+	$(RS) f-generate_concordance_scatterplot-sars2.R
+	$(RS) f-generate_threshold_histograms.R
 
 all: process_drugs process_groups process_diseases analyse visualise
