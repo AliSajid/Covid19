@@ -1,7 +1,6 @@
 library(tidyverse)
 library(RColorBrewer)
 library(extrafont)
-#library(Cairo)
 
 loadfonts()
 
@@ -75,6 +74,6 @@ fp <- bp +
          shape = guide_legend(override.aes = list(size=10))
   )
 
-fp + ggtitle("Concordance Scatter plot for SARS")
+full <- fp + ggtitle("Concordance Scatter plot for SARS")
 
-ggsave("figures/SARS-Concordance-Scatterplot.png", device = "png", width = 11.69 * 2, height = 8.27 * 2, units = "in")
+ggsave("figures/SARS-Concordance-Scatterplot.png", plot = full, device = "png", width = 11.69 * 2, height = 8.27 * 2, units = "in")
