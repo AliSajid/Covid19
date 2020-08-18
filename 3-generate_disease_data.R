@@ -34,25 +34,48 @@ process_disease <- function(disease, threshold = 0.85, library = "LIB_5", cell_l
   src_file <- generate_name(src_path, name_sig, "tsv")
 
   print(glue("Processing {disease} for threshold {threshold} and cell line {cell_line}"))
-  sig <- read_tsv(src_file) %>%
-    write_tsv(file_sig)
+  if (!file.exists(file_sig)) {
+    sig <- read_tsv(src_file) %>%
+      write_tsv(file_sig)
+  } else {
+    print(glue("{file_sig} already exists"))
+  }
 
   print(glue("Generating filtered signatures for {disease}"))
-  filtered_up <- generate_filtered_signature(sig, direction = "up", threshold = threshold)
-  write_tsv(filtered_up, file_filtered_up)
-  filtered_down <- generate_filtered_signature(sig, direction = "down", threshold = threshold)
-  write_tsv(filtered_down, file_filtered_down)
+  if (!file.exists(file_filtered_up)) {
+    filtered_up <- generate_filtered_signature(sig, direction = "up", threshold = threshold)
+    write_tsv(filtered_up, file_filtered_up)
+  } else {
+    print(glue("{file_filtered_up} already exists"))
+  }
+  if (!file.exists(file_filtered_down)) {
+    filtered_down <- generate_filtered_signature(sig, direction = "down", threshold = threshold)
+    write_tsv(filtered_down, file_filtered_down)
+  } else {
+    print(glue("{file_filtered_down} already exists"))
+  }
 
   print(glue("Getting connected signatures for {disease}"))
-  connected_up <- get_concordant_signatures(filtered_up, library = library)
-  write_tsv(connected_up, file_connected_up)
-  connected_down <- get_concordant_signatures(filtered_down, library = library)
-  write_tsv(connected_down, file_connected_down)
+  if (!file.exists(file_connected_up)) {
+    connected_up <- get_concordant_signatures(filtered_up, library = library)
+    write_tsv(connected_up, file_connected_up)
+  } else {
+    print(glue("{file_connected_up} already exists"))
+  }
+  if (!file.exists(file_connected_down)) {
+    connected_down <- get_concordant_signatures(filtered_down, library = library)
+    write_tsv(connected_down, file_connected_down)
+  } else {
+    print(glue("{file_connected_down} already exists"))
+  }
 
   print(glue("Generating consensus perturbagen list for {disease}"))
-  consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = cell_line, discordant = TRUE)
-  write_tsv(consensus, file_consensus)
-
+  if (!file.exists(file_consensus)) {
+    consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = cell_line, discordant = TRUE)
+    write_tsv(consensus, file_consensus)
+  } else {
+    print(glue("{file_consensus} already exists"))
+  }
 }
 
 process_diseases <- function(diseases, threshold = 0.85, library = "LIB_5") {
