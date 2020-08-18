@@ -16,23 +16,17 @@ clean:
 process_drugs: 1-download_drug_data.R
 	$(RS) 1-download_drug_data.R
 
-process_groups: 1-generate_group_data.R
-	$(RS) 1-generate_group_data.R
+process_groups: 2-generate_group_data.R
+	$(RS) 2-generate_group_data.R
 
-process_diseases: 2-*.R 3-*.R
-	$(RS) 2-download_influenza_data.R
-	$(RS) 2-process_mers_data.R
-	$(RS) 2-process_sars_data.R
+process_diseases: 3-generate_disease_data.R
 	$(RS) 3-generate_disease_data.R
 
-analyse: 4-*.R
+analyse: 4-generate_common_perturbagens_sars*.R
 	$(RS) 4-generate_common_perturbagens_sars.R
-	$(RS) 4-generate_common_perturbagens_sars2.R
-	$(RS) 4-generate_sars_sars2_combined_list.R
+	$(RS) 5-generate_common_perturbagens_sars2.R
 
-visualise: f-*.R
-	$(RS) f-generate_concorddance_scatterplot-sars.R
-	$(RS) f-generate_concorddance_scatterplot-sars2.R
-	$(RS) f-generate_threshold_histogram.R
+visualise:
+	echo "Visualizations To Be Generated"
 
 all: process_drugs process_groups process_diseases analyse visualise
