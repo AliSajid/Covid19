@@ -9,7 +9,7 @@ metadata <- read_tsv("raw/annotation/GSE56192-RunMapping.txt") %>%
   filter(str_detect(sample_alias, "\\_SARS.*High.*24hr.*") | str_detect(sample_alias, "\\_MOCK.*")) %>%
   extract(sample_alias, into = c("condition"), regex = "VMERS\\_(\\w+)\\-.*")
 
-raw <- read_csv("raw/annotation/GSE56192-featurecounts.csv")
+raw <- read_tsv("raw/annotation/GSE56192-featurecounts.tsv")
 symbols <- AnnotationDbi::select(org.Hs.eg.db, keys = raw$`Gene ID`, columns = c("SYMBOL", "ENTREZID"), keytype = "ENSEMBL")
 
 counts <- raw %>%
