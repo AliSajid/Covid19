@@ -46,7 +46,7 @@ l1000 <- read_tsv("raw/annotation/l1000-list.tsv") %>% pull(names)
 
 top <- topTags(qlf, n = Inf)
 
-top$table %>%
+table <- top$table %>%
   select(ENTREZID, SYMBOL, logFC, PValue) %>%
   rename(ID_geneid = ENTREZID,	Name_GeneSymbol = SYMBOL,
          Value_LogDiffExp = logFC,	Significance_pvalue = PValue) %>%
