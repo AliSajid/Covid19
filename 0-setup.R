@@ -73,7 +73,7 @@ figures_dir <- file.path("figures")
 results_dir <- file.path("results")
 
 signatures_dir <- file.path(data_dir, "signatures")
-signatures_subdirs <- file.path(signatures_dir, c("drug", "group", "disease"))
+signatures_subdirs <- file.path(signatures_dir, c("drug", "group", "disease", "sig_lists"))
 
 
 all_dirs <- c(signatures_subdirs, figures_dir, results_dir,

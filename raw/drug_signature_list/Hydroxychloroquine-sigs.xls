@@ -1,0 +1,5 @@
+SignatureId	Perturbagen	GeneTargets	Concentration	CellLine	Time	is_exemplar
+LINCSCP_259894	Hydroxychloroquine	TLR7|TLR9	10uM	NEU	24h	0
+LINCSCP_34460	Hydroxychloroquine	TLR7|TLR9	10uM	MCF7	24h	1
+LINCSCP_34562	Hydroxychloroquine	TLR7|TLR9	10uM	MCF7	6h	0
+LINCSCP_41480	Hydroxychloroquine	TLR7|TLR9	10uM	NEU	6h	1

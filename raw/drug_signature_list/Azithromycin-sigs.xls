@@ -1,0 +1,17 @@
+SignatureId	Perturbagen	GeneTargets	Concentration	CellLine	Time	is_exemplar
+LINCSCP_109422	Azithromycin		0.37uM	HELA	24h	
+LINCSCP_109424	Azithromycin		0.04uM	HELA	24h	
+LINCSCP_142810	Azithromycin		0.04uM	MCF7	24h	
+LINCSCP_161011	Azithromycin		0.04uM	PC3	24h	
+LINCSCP_174603	Azithromycin		0.12uM	YAPC	24h	
+LINCSCP_188999	Azithromycin		10uM	A549	24h	0
+LINCSCP_22090	Azithromycin		10uM	HEPG2	6h	1
+LINCSCP_268738	Azithromycin		10uM	PC3	24h	0
+LINCSCP_48027	Azithromycin		10uM	PC3	6h	1
+LINCSCP_5547	Azithromycin		10uM	A549	6h	1
+LINCSCP_57820	Azithromycin		10uM	VCAP	24h	0
+LINCSCP_57905	Azithromycin		10uM	VCAP	6h	1
+LINCSCP_79258	Azithromycin		0.37uM	A375	24h	
+LINCSCP_79260	Azithromycin		0.04uM	A375	24h	
+LINCSCP_97589	Azithromycin		10uM	HA1E	24h	
+LINCSCP_97594	Azithromycin		0.04uM	HA1E	24h	

@@ -1,0 +1,17 @@
+SignatureId	Perturbagen	GeneTargets	Concentration	CellLine	Time	is_exemplar
+LINCSCP_127252	Lopinavir		10uM	HT29	24h	
+LINCSCP_143837	Lopinavir		10uM	MCF7	24h	
+LINCSCP_162038	Lopinavir		10uM	PC3	24h	
+LINCSCP_16740	Lopinavir		10uM	HA1E	6h	1
+LINCSCP_175628	Lopinavir		10uM	YAPC	24h	
+LINCSCP_22629	Lopinavir		10uM	HEPG2	6h	1
+LINCSCP_2480	Lopinavir		10uM	A375	6h	1
+LINCSCP_26742	Lopinavir		10uM	HT29	6h	1
+LINCSCP_281588	Lopinavir		10uM	PHH	24h	1
+LINCSCP_295319	Lopinavir		10uM	VCAP	24h	0
+LINCSCP_46860	Lopinavir		10uM	PC3	24h	0
+LINCSCP_52456	Lopinavir		10uM	SKB	24h	1
+LINCSCP_59135	Lopinavir		10uM	VCAP	6h	1
+LINCSCP_6513	Lopinavir		10uM	A549	24h	0
+LINCSCP_6708	Lopinavir		10uM	A549	6h	1
+LINCSCP_80274	Lopinavir		10uM	A375	24h	
