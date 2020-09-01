@@ -16,7 +16,7 @@ los_group_mcf7 <- c("Losartan")
 
 mcf7_groups <- list(quine_group_mcf7, nib_group_mcf7, vir_group_mcf7, azt_group_mcf7, los_group_mcf7)
 
-mcf7_sig_map <- read_tsv("MCF7-Drug-Signature_Map.tsv")
+mcf7_sig_map <- read_tsv("maps/MCF7-Drug-Signature_Map.tsv")
 
 quine_group_ha1e <- c("Chloroquine")
 nib_group_ha1e <- c("Baricitinib", "Fedratinib", "Ruxolitinib")
@@ -26,7 +26,7 @@ los_group_ha1e <- c("Losartan")
 
 ha1e_groups <- list(quine_group_ha1e, nib_group_ha1e, vir_group_ha1e, azt_group_ha1e, los_group_ha1e)
 
-ha1e_sig_map <- read_tsv("HA1E-Drug-Signature_Map.tsv")
+ha1e_sig_map <- read_tsv("maps/HA1E-Drug-Signature_Map.tsv")
 
 strip_name <- function(call) {
   name <- as.character(call)[2]

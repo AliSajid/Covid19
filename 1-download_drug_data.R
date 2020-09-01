@@ -100,6 +100,6 @@ process_seed_drugs <- function(datafile, threshold = 0.85, library = "LIB_5", ce
 
 cutoffs <- c(0, 0.26, 0.5, 0.85, 1)
 
-ha1e <- sapply(cutoffs, process_seed_drugs, datafile = "HA1E-Drug-Signature_Map.tsv", cell_line = "HA1E", library = "LIB_5")
+ha1e <- sapply(cutoffs, process_seed_drugs, datafile = "maps/HA1E-Drug-Signature_Map.tsv", cell_line = "HA1E", library = "LIB_5")
 
-mcf7 <- sapply(cutoffs, process_seed_drugs, datafile = "MCF7-Drug-Signature_Map.tsv", cell_line = "MCF7", library = "LIB_5")
+mcf7 <- sapply(cutoffs, process_seed_drugs, datafile = "maps/MCF7-Drug-Signature_Map.tsv", cell_line = "MCF7", library = "LIB_5")
