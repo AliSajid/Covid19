@@ -26,7 +26,7 @@ counts <- drug_data %>%
 
 
 filter_drug_data <- function(variables) {
-  file <- paste(variables["CellLine"], variables["Concentration"], variables["Time"], "Siganture_Map", sep = "-")
+  file <- paste(variables["CellLine"], variables["Concentration"], variables["Time"], "Signature_Map", sep = "-")
   file_name <- file.path("maps", paste(file, "tsv", sep = "."))
 
   drug_data %>%
