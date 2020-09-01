@@ -25,3 +25,17 @@ counts <- drug_data %>%
   write_csv("data/signatures/sig_lists/maximum_representation_combinations.csv")
 
 
+filter_drug_data <- function(variables) {
+  file <- paste(variables["CellLine"], variables["Concentration"], variables["Time"], "Siganture_Map", sep = "-")
+  file_name <- file.path("maps", paste(file, "tsv", sep = "."))
+
+  drug_data %>%
+    filter(Concentration == variables["Concentration"],
+           Time == variables["Time"],
+           CellLine == variables["CellLine"]) %>%
+    write_tsv(file_name)
+}
+
+filtered_lists <- apply(counts, 1, filter_drug_data)
+
+
