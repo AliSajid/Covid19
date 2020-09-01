@@ -25,6 +25,10 @@ process_diseases: 2-*.R 3-*.R
 	$(RS) 2-process_sars_data.R
 	$(RS) 3-generate_disease_data.R
 
+process_new: 6-*.R
+	$(RS) 6-download_new_drug_data.R
+	$(RS) 6-generate_new_group_data.R
+
 analyse: 4-*.R
 	$(RS) 4-generate_common_perturbagens_sars.R
 	$(RS) 4-generate_common_perturbagens_sars2.R
