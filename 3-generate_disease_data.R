@@ -76,7 +76,11 @@ process_disease <- function(disease, threshold = 0.85, library = "LIB_5", cell_l
 
   print(glue("Generating consensus perturbagen list for {disease}"))
   if (!file.exists(file_consensus)) {
-    consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = cell_line, discordant = TRUE)
+    if (cell_line %in% c("HA1E", "MCF7")) {
+      consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = cell_line, discordant = TRUE)
+    } else {
+      consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = "all", discordant = TRUE)
+    }
     write_tsv(consensus, file_consensus)
   } else {
     print(glue("{file_consensus} already exists"))
@@ -85,7 +89,8 @@ process_disease <- function(disease, threshold = 0.85, library = "LIB_5", cell_l
 
 process_diseases <- function(diseases, threshold = 0.85, library = "LIB_5") {
   for (dis in diseases) {
-    for (cell_line in c("HA1E", "MCF7")) {
+    for (cell_line in c("HA1E", "MCF7", "all", "A549-10uM-24h", "A549-10uM-6h","HA1E-10uM-24h",
+                        "HT29-10uM-24h", "MCF7-10uM-24h", "PC3-10uM-24h",  "VCAP-10uM-24h", "VCAP-10uM-6h")) {
       process_disease(dis, threshold = threshold, library = library, cell_line = cell_line)
     }
   }
