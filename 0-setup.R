@@ -6,9 +6,6 @@ source("pipeline.R")
 data_dir <- file.path("data")
 map_dir <- file.path("maps")
 
-ha1e_dir <- file.path(data_dir, "HA1E")
-mcf7_dir <- file.path(data_dir, "MCF7")
-
 a5491_dir <- file.path(data_dir, "A549-10uM-24h")
 a5492_dir <- file.path(data_dir, "A549-10uM-6h")
 ha1e2_dir <- file.path(data_dir, "HA1E-10uM-24h")
@@ -17,13 +14,6 @@ mcf72_dir <- file.path(data_dir, "MCF7-10uM-24h")
 pc3_dir <- file.path(data_dir, "PC3-10uM-24h")
 vcap1_dir <- file.path(data_dir, "VCAP-10uM-24h")
 vcap2_dir <- file.path(data_dir, "VCAP-10uM-6h")
-
-ha1e_filtered_dir <- file.path(ha1e_dir, "filtered")
-ha1e_filtered_drug_dir <- file.path(ha1e_filtered_dir, "drug")
-ha1e_filtered_group_dir <- file.path(ha1e_filtered_dir, "group")
-mcf7_filtered_dir <- file.path(mcf7_dir, "filtered")
-mcf7_filtered_drug_dir <- file.path(mcf7_filtered_dir, "drug")
-mcf7_filtered_group_dir <- file.path(mcf7_filtered_dir, "group")
 
 a5491_filtered_dir <- file.path(a5491_dir, "filtered")
 a5491_filtered_drug_dir <- file.path(a5491_filtered_dir, "drug")
@@ -50,11 +40,6 @@ vcap2_filtered_dir <- file.path(vcap2_dir, "filtered")
 vcap2_filtered_drug_dir <- file.path(vcap2_filtered_dir, "drug")
 vcap2_filtered_group_dir <- file.path(vcap2_filtered_dir, "group")
 
-ha1e_filtered_drug_up_dir <- file.path(ha1e_filtered_drug_dir, "up")
-ha1e_filtered_drug_down_dir <- file.path(ha1e_filtered_drug_dir, "down")
-mcf7_filtered_drug_up_dir <- file.path(mcf7_filtered_drug_dir, "up")
-mcf7_filtered_drug_down_dir <- file.path(mcf7_filtered_drug_dir, "down")
-
 a5491_filtered_drug_up_dir <- file.path(a5491_filtered_drug_dir, "up")
 a5491_filtered_drug_down_dir <- file.path(a5491_filtered_drug_dir, "down")
 a5492_filtered_drug_up_dir <- file.path(a5492_filtered_drug_dir, "up")
@@ -72,12 +57,6 @@ vcap1_filtered_drug_down_dir <- file.path(vcap1_filtered_drug_dir, "down")
 vcap2_filtered_drug_up_dir <- file.path(vcap2_filtered_drug_dir, "up")
 vcap2_filtered_drug_down_dir <- file.path(vcap2_filtered_drug_dir, "down")
 
-
-ha1e_filtered_group_up_dir <- file.path(ha1e_filtered_group_dir, "up")
-ha1e_filtered_group_down_dir <- file.path(ha1e_filtered_group_dir, "down")
-mcf7_filtered_group_up_dir <- file.path(mcf7_filtered_group_dir, "up")
-mcf7_filtered_group_down_dir <- file.path(mcf7_filtered_group_dir, "down")
-
 a5491_filtered_group_up_dir <- file.path(a5491_filtered_group_dir, "up")
 a5491_filtered_group_down_dir <- file.path(a5491_filtered_group_dir, "down")
 a5492_filtered_group_up_dir <- file.path(a5492_filtered_group_dir, "up")
@@ -94,14 +73,6 @@ vcap1_filtered_group_up_dir <- file.path(vcap1_filtered_group_dir, "up")
 vcap1_filtered_group_down_dir <- file.path(vcap1_filtered_group_dir, "down")
 vcap2_filtered_group_up_dir <- file.path(vcap2_filtered_group_dir, "up")
 vcap2_filtered_group_down_dir <- file.path(vcap2_filtered_group_dir, "down")
-
-
-ha1e_connected_dir <- file.path(ha1e_dir, "connected")
-ha1e_connected_drug_dir <- file.path(ha1e_connected_dir, "drug")
-ha1e_connected_group_dir <- file.path(ha1e_connected_dir, "group")
-mcf7_connected_dir <- file.path(mcf7_dir, "connected")
-mcf7_connected_drug_dir <- file.path(mcf7_connected_dir, "drug")
-mcf7_connected_group_dir <- file.path(mcf7_connected_dir, "group")
 
 a5491_connected_dir <- file.path(a5491_dir, "connected")
 a5491_connected_drug_dir <- file.path(a5491_connected_dir, "drug")
@@ -128,11 +99,6 @@ vcap2_connected_dir <- file.path(vcap2_dir, "connected")
 vcap2_connected_drug_dir <- file.path(vcap2_connected_dir, "drug")
 vcap2_connected_group_dir <- file.path(vcap2_connected_dir, "group")
 
-ha1e_connected_drug_up_dir <- file.path(ha1e_connected_drug_dir, "up")
-ha1e_connected_drug_down_dir <- file.path(ha1e_connected_drug_dir, "down")
-mcf7_connected_drug_up_dir <- file.path(mcf7_connected_drug_dir, "up")
-mcf7_connected_drug_down_dir <- file.path(mcf7_connected_drug_dir, "down")
-
 a5491_connected_drug_up_dir <- file.path(a5491_connected_drug_dir, "up")
 a5491_connected_drug_down_dir <- file.path(a5491_connected_drug_dir, "down")
 a5492_connected_drug_up_dir <- file.path(a5492_connected_drug_dir, "up")
@@ -150,11 +116,6 @@ vcap1_connected_drug_down_dir <- file.path(vcap1_connected_drug_dir, "down")
 vcap2_connected_drug_up_dir <- file.path(vcap2_connected_drug_dir, "up")
 vcap2_connected_drug_down_dir <- file.path(vcap2_connected_drug_dir, "down")
 
-ha1e_connected_group_up_dir <- file.path(ha1e_connected_group_dir, "up")
-ha1e_connected_group_down_dir <- file.path(ha1e_connected_group_dir, "down")
-mcf7_connected_group_up_dir <- file.path(mcf7_connected_group_dir, "up")
-mcf7_connected_group_down_dir <- file.path(mcf7_connected_group_dir, "down")
-
 a5491_connected_group_up_dir <- file.path(a5491_connected_group_dir, "up")
 a5491_connected_group_down_dir <- file.path(a5491_connected_group_dir, "down")
 a5492_connected_group_up_dir <- file.path(a5492_connected_group_dir, "up")
@@ -171,13 +132,6 @@ vcap1_connected_group_up_dir <- file.path(vcap1_connected_group_dir, "up")
 vcap1_connected_group_down_dir <- file.path(vcap1_connected_group_dir, "down")
 vcap2_connected_group_up_dir <- file.path(vcap2_connected_group_dir, "up")
 vcap2_connected_group_down_dir <- file.path(vcap2_connected_group_dir, "down")
-
-ha1e_consensus_dir <- file.path(ha1e_dir, "consensus")
-ha1e_consensus_drug_dir <- file.path(ha1e_consensus_dir, "drug")
-ha1e_consensus_group_dir <- file.path(ha1e_consensus_dir, "group")
-mcf7_consensus_dir <- file.path(mcf7_dir, "consensus")
-mcf7_consensus_drug_dir <- file.path(mcf7_consensus_dir, "drug")
-mcf7_consensus_group_dir <- file.path(mcf7_consensus_dir, "group")
 
 a5491_consensus_dir <- file.path(a5491_dir, "consensus")
 a5491_consensus_drug_dir <- file.path(a5491_consensus_dir, "drug")
@@ -244,16 +198,6 @@ signatures_subdirs <- file.path(signatures_dir, c("drug", "group", "disease", "s
 all_dirs <- c(map_dir, signatures_subdirs, figures_dir, results_dir,
               diseases_filtered_up, diseases_filtered_down,
               diseases_connected_up, diseases_connected_down, diseases_consensus,
-              ha1e_filtered_drug_up_dir, ha1e_filtered_drug_down_dir,
-              ha1e_filtered_group_up_dir, ha1e_filtered_group_down_dir,
-              ha1e_connected_drug_up_dir, ha1e_connected_drug_down_dir,
-              ha1e_connected_group_up_dir, ha1e_connected_group_down_dir,
-              ha1e_consensus_group_dir, ha1e_consensus_drug_dir,
-              mcf7_filtered_drug_up_dir, mcf7_filtered_drug_down_dir,
-              mcf7_filtered_group_up_dir, mcf7_filtered_group_down_dir,
-              mcf7_connected_drug_up_dir, mcf7_connected_drug_down_dir,
-              mcf7_connected_group_up_dir, mcf7_connected_group_down_dir,
-              mcf7_consensus_group_dir, mcf7_consensus_drug_dir,
               diseases_consensus_ha1e, diseases_consensus_mcf7,
               diseases_consensus_a5491, diseases_consensus_a5492,
               diseases_consensus_ha1e2, diseases_consensus_ht29,

@@ -13,26 +13,28 @@ clean:
 	rm -rfv $(FIG_DIR)
 	$(RS) 0-setup.R
 
-process_drugs: 1-download_drug_data.R
-	$(RS) 1-download_drug_data.R
+make_lists: 1-explore_drug_sig_lists
+	$(RS) 1-explore_drug_sig_lists
 
-process_groups: 1-generate_group_data.R
-	$(RS) 1-generate_group_data.R
+process_drugs: 2-download_drug_data.R
+	$(RS) 2-download_drug_data.R
 
-process_diseases: 2-*.R 3-*.R
-	$(RS) 2-download_influenza_data.R
-	$(RS) 2-process_mers_data.R
-	$(RS) 2-process_sars_data.R
-	$(RS) 3-generate_disease_data.R
+process_groups: 2-generate_group_data.R
+	$(RS) 2-generate_group_data.R
 
-process_new: 6-*.R
-	$(RS) 6-download_new_drug_data.R
-	$(RS) 6-generate_new_group_data.R
+process_diseases: 3-*.R 4-*.R
+	$(RS) 3-download_influenza_data.R
+	$(RS) 3-process_mers_data.R
+	$(RS) 3-process_sars_data.R
+	$(RS) 4-generate_disease_data.R
 
-analyse: 4-*.R
-	$(RS) 4-generate_common_perturbagens_sars.R
-	$(RS) 4-generate_common_perturbagens_sars2.R
-	$(RS) 4-generate_sars_sars2_combined_list.R
+analyse: 5-*.R
+	$(RS) 5-generate_common_perturbagens_sars.R
+	$(RS) 5-generate_common_perturbagens_sars2.R
+	$(RS) 5-generate_common_perturbagens_covidc.R
+	$(RS) 5-generate_common_perturbagens_covidm.R
+	$(RS) 6-generate_sars_sars2_combined_list.R
+	$(RS) 6-output_summarized_dataset_sars2.R
 
 visualise: f-*.R
 	$(RS) f-generate_concordance_scatterplot-sars.R
