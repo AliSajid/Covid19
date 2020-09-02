@@ -80,7 +80,7 @@ process_perturbagen <- function(pertid, threshold = 0.85, library = "LIB_5", cel
 
   print(glue("Generating consensus perturbagen list for {pertid}"))
   if (!file.exists(file_consensus)) {
-    consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = cell_line)
+    consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = "all")
     write_tsv(consensus, file_consensus)
   } else {
     print(glue("{file_consensus} already exists"))

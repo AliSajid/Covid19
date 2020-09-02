@@ -49,58 +49,61 @@ process_group <- function(members, name, signature_map, cell_line, threshold = 0
     filter(Drug %in% members) %>%
     pull(SignatureId)
 
-  print(glue("Processing {name} group for threshold {threshold}"))
-  if (!file.exists(file_sig)) {
-    sigs_data <- lapply(sigs, function(x) get_l1000_signature(x) %>% select(Name_GeneSymbol, Value_LogDiffExp))
-    group_sig <- reduce(sigs_data, inner_join, by = "Name_GeneSymbol") %>%
-      pivot_longer(cols = starts_with("Value")) %>%
-      group_by(Name_GeneSymbol) %>%
-      summarise(Value_LogDiffExp = mean(value)) %>%
-      write_tsv(file_sig)
-  } else {
-    print(glue("{file_sig} already exists"))
-    group_sig <- read_tsv(file_sig)
+  if (!is_empty(sigs)) {
+    print(glue("Processing {name} group for threshold {threshold}"))
+    if (!file.exists(file_sig)) {
+      sigs_data <- lapply(sigs, function(x) get_l1000_signature(x) %>% select(Name_GeneSymbol, Value_LogDiffExp))
+      group_sig <- reduce(sigs_data, inner_join, by = "Name_GeneSymbol") %>%
+        pivot_longer(cols = starts_with("Value")) %>%
+        group_by(Name_GeneSymbol) %>%
+        summarise(Value_LogDiffExp = mean(value)) %>%
+        write_tsv(file_sig)
+    } else {
+      print(glue("{file_sig} already exists"))
+      group_sig <- read_tsv(file_sig)
+    }
+
+    print(glue("Generating filtered signatures for {name} group"))
+    if (!file.exists(file_filtered_up)) {
+      filtered_up <- generate_filtered_signature(group_sig, direction = "up", threshold = threshold)
+      write_tsv(filtered_up, file_filtered_up)
+    } else {
+      print(glue("{file_filtered_up} already exists"))
+      filtered_up <- read_tsv(file_filtered_up)
+    }
+    if (!file.exists(file_filtered_down)) {
+      filtered_down <- generate_filtered_signature(group_sig, direction = "down", threshold = threshold)
+      write_tsv(filtered_down, file_filtered_down)
+    } else {
+      print(glue("{file_filtered_down} already exists"))
+      filtered_down <- read_tsv(file_filtered_down)
+    }
+
+    print(glue("Getting connected signatures for {name} group"))
+    if (!file.exists(file_connected_up)) {
+      connected_up <- get_concordant_signatures(filtered_up, library = library)
+      write_tsv(connected_up, file_connected_up)
+    } else {
+      print(glue("{file_connected_up} already exists"))
+      connected_up <- read_tsv(file_connected_up)
+    }
+    if (!file.exists(file_connected_down)) {
+      connected_down <- get_concordant_signatures(filtered_down, library = library)
+      write_tsv(connected_down, file_connected_down)
+    } else {
+      print(glue("{file_connected_down} already exists"))
+      connected_down <- read_tsv(file_connected_down)
+    }
+
+    print(glue("Generating consensus perturbagen list for {name} group"))
+    if (!file.exists(file_consensus)) {
+      consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = "all")
+      write_tsv(consensus, file_consensus)
+    } else {
+      print(glue("{file_consensus} already exists"))
+    }
   }
 
-  print(glue("Generating filtered signatures for {name} group"))
-  if (!file.exists(file_filtered_up)) {
-    filtered_up <- generate_filtered_signature(group_sig, direction = "up", threshold = threshold)
-    write_tsv(filtered_up, file_filtered_up)
-  } else {
-    print(glue("{file_filtered_up} already exists"))
-    filtered_up <- read_tsv(file_filtered_up)
-  }
-  if (!file.exists(file_filtered_down)) {
-    filtered_down <- generate_filtered_signature(group_sig, direction = "down", threshold = threshold)
-    write_tsv(filtered_down, file_filtered_down)
-  } else {
-    print(glue("{file_filtered_down} already exists"))
-    filtered_down <- read_tsv(file_filtered_down)
-  }
-
-  print(glue("Getting connected signatures for {name} group"))
-  if (!file.exists(file_connected_up)) {
-    connected_up <- get_concordant_signatures(filtered_up, library = library)
-    write_tsv(connected_up, file_connected_up)
-  } else {
-    print(glue("{file_connected_up} already exists"))
-    connected_up <- read_tsv(file_connected_up)
-  }
-  if (!file.exists(file_connected_down)) {
-    connected_down <- get_concordant_signatures(filtered_down, library = library)
-    write_tsv(connected_down, file_connected_down)
-  } else {
-    print(glue("{file_connected_down} already exists"))
-    connected_down <- read_tsv(file_connected_down)
-  }
-
-  print(glue("Generating consensus perturbagen list for {name} group"))
-  if (!file.exists(file_consensus)) {
-    consensus <- generate_consensus_signature(connected_up, connected_down, cell_line = cell_line)
-    write_tsv(consensus, file_consensus)
-  } else {
-    print(glue("{file_consensus} already exists"))
-  }
 }
 
 process_seed_groups <- function(groups, names, signature_map, cell_line, threshold = 0.85, library = "LIB_5") {
