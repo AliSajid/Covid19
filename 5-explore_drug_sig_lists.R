@@ -33,6 +33,7 @@ filter_drug_data <- function(variables) {
     filter(Concentration == variables["Concentration"],
            Time == variables["Time"],
            CellLine == variables["CellLine"]) %>%
+    rename(Drug = Perturbagen) %>%
     write_tsv(file_name)
 }
 

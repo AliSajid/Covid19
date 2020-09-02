@@ -1,4 +1,4 @@
-SignatureId	Perturbagen	Concentration	CellLine	Time
+SignatureId	Drug	Concentration	CellLine	Time
 LINCSCP_120287	Baricitinib	10uM	HT29	24h
 LINCSCP_127150	Chloroquine	10uM	HT29	24h
 LINCSCP_116385	Fedratinib	10uM	HT29	24h

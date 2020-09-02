@@ -1,4 +1,4 @@
-SignatureId	Perturbagen	Concentration	CellLine	Time
+SignatureId	Drug	Concentration	CellLine	Time
 LINCSCP_268738	Azithromycin	10uM	PC3	24h
 LINCSCP_44520	Chloroquine	10uM	PC3	24h
 LINCSCP_150985	Fedratinib	10uM	PC3	24h

@@ -1,4 +1,4 @@
-SignatureId	Perturbagen	Concentration	CellLine	Time
+SignatureId	Drug	Concentration	CellLine	Time
 LINCSCP_57820	Azithromycin	10uM	VCAP	24h
 LINCSCP_56799	Chloroquine	10uM	VCAP	24h
 LINCSCP_56833	Fedratinib	10uM	VCAP	24h

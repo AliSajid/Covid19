@@ -1,4 +1,4 @@
-SignatureId	Perturbagen	Concentration	CellLine	Time
+SignatureId	Drug	Concentration	CellLine	Time
 LINCSCP_97589	Azithromycin	10uM	HA1E	24h
 LINCSCP_91684	Baricitinib	10uM	HA1E	24h
 LINCSCP_15217	Chloroquine	10uM	HA1E	24h

@@ -1,4 +1,4 @@
-SignatureId	Perturbagen	Concentration	CellLine	Time
+SignatureId	Drug	Concentration	CellLine	Time
 LINCSCP_136866	Baricitinib	10uM	MCF7	24h
 LINCSCP_143735	Chloroquine	10uM	MCF7	24h
 LINCSCP_236537	Chloroquine	10uM	MCF7	24h
