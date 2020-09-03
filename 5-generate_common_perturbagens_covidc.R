@@ -4,10 +4,8 @@ source("pipeline.R")
 generate_common_perturbagens <-
   function(disease, disease_thresh, groups_thresh, cell_line) {
 
-    #    group_names <- c("azt", "los", "nib", "quine", "vir")
-
     disease_prefix <-
-      file.path("data", "disease", disease, "consensus", "all")
+      file.path("data", "disease", disease, "consensus", cell_line)
     disease_filename <-
       paste(disease, disease_thresh, "consensus", sep = "-")
     disease_file <- generate_name(disease_prefix, disease_filename, "tsv")

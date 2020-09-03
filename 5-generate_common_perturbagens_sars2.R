@@ -5,7 +5,7 @@ generate_common_perturbagens <-
   function(disease, disease_thresh, groups_thresh, cell_line) {
 
     disease_prefix <-
-      file.path("data", "disease", disease, "consensus", "all")
+      file.path("data", "disease", disease, "consensus", cell_line)
     disease_filename <-
       paste(disease, disease_thresh, "consensus", sep = "-")
     disease_file <- generate_name(disease_prefix, disease_filename, "tsv")
@@ -76,4 +76,4 @@ all_data <- list(a5491, a5492, ha1e2, ht29, mcf72, pc3, vcap1, vcap2)
 
 combined <- reduce(all_data, inner_join, by = "compound") %>%
   unique %>%
-  write_csv("results/sars2-combined-drugs.csv")
+  write_csv("results/sars2-groups-combined-drugs.csv")
