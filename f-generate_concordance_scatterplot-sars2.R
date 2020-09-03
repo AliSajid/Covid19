@@ -5,26 +5,25 @@ library(extrafont)
 loadfonts()
 
 col_spec <- cols(
-  Candidates = col_character(),
-  MCF7 = col_double(),
-  HA1E = col_double()
+  .default = col_double(),
+  Candidates = col_character()
 )
 
 specials <- c("Ruxolitinib", "Sirolimus")
 
 top <- c("Ivermectin", "Genistein", "Alvocidib")
 
-df <- read_csv("results/dA549_2-ha1e-mcf7-combined-drugs.csv",
-               col_names = c("Candidates", "MCF7", "HA1E"),
+df <- read_csv("results/sars2-summarized-dataset.csv",
+               col_names = c("Candidates", "Avg", "SDev", "SDLog10", "SDLog2"),
                col_types = col_spec,
                skip = 1) %>%
-  mutate(Selected = if_else(HA1E >= 0.5 & MCF7 >= 0.5, "Yes", "No"),
+  mutate(Selected = if_else(Avg >= 0.5 & SDev <= 0.06, "Yes", "No"),
          Selected = if_else(Candidates %in% specials, "Special", Selected),
          Selected = if_else(Candidates %in% top, "Top", Selected))
 
 p <- ggplot(data=df,
-            mapping = aes(x = MCF7,
-                          y = HA1E,
+            mapping = aes(x = Avg,
+                          y = SDev,
                           size = 4,
                           shape = Selected,
                           color = Selected)
@@ -32,13 +31,13 @@ p <- ggplot(data=df,
 
 
 bp <- p +
+  geom_hline(yintercept = 0.3, size = 1) +
   geom_hline(yintercept = 0.5, size = 1) +
-  geom_hline(yintercept = 0.8, size = 1) +
-  geom_vline(xintercept = 0.5, size = 1) +
-  geom_vline(xintercept = 0.8, size = 1) +
+  geom_vline(xintercept = 0.05, size = 1) +
+  geom_vline(xintercept = 0.10, size = 1) +
   geom_point(stroke = 2) +
-  xlab("\n\nAverage Reported Concordance Score for MCF7") +
-  ylab("Average Reported Concordance Score for HA1E\n\n")
+  xlab("\n\nAverage Reported Concordance Scores across Cell Line Datasets") +
+  ylab("Standard Deviation of Reportedd Concordance Scores across Cell Line Datasets\n\n")
 
 fp <- bp +
   theme_minimal() +
@@ -63,11 +62,11 @@ fp <- bp +
                      breaks = c("Yes", "No", "Top", "Special")) +
   scale_x_continuous(
     breaks = seq(0, 1, 0.1),
-    limits = c(0.3,1)
+    limits = c(0.3,0.8)
   ) +
   scale_y_continuous(
-    breaks = seq(0, 1, 0.1),
-    limits = c(0.3,1)
+    breaks = seq(0, 0.15, 0.01),
+    limits = c(0, 0.15)
   ) +
   guides(size=FALSE,
          color = guide_legend(override.aes = list(size=10)),

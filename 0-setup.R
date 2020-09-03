@@ -5,6 +5,7 @@ source("pipeline.R")
 
 data_dir <- file.path("data")
 map_dir <- file.path("maps")
+fig_dir <- file.path("figures")
 
 a5491_dir <- file.path(data_dir, "A549-10uM-24h")
 a5492_dir <- file.path(data_dir, "A549-10uM-6h")
