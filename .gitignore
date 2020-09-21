@@ -11,3 +11,5 @@ x-*
 *xlsx
 scratch/
 *.bak
+rsconnect/
+*.Rmd
