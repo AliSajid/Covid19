@@ -1,10 +1,18 @@
 library(UpSetR)
 library(tidyverse)
 
-sars2 <- read_csv("results/sars2-summarized-dataset.csv") %>%
+col_spec <- cols(
+  compound = col_character(),
+  avg = col_double(),
+  sdev = col_double(),
+  slog10 = col_double(),
+  slog2 = col_double()
+)
+
+sars2 <- read_csv("results/sars2-summarized-dataset.csv", col_types = col_spec) %>%
   pull(compound)
 
-sars2_fda <-   read_csv("results/sars2-summarized-dataset.csv") %>%
+sars2_fda <-   read_csv("results/sars2-summarized-dataset.csv", col_types = col_spec) %>%
   filter(str_detect(compound, "CHEMBL", negate = T),
                       str_detect(compound, "SCHEMBL", negate = T),
                       str_detect(compound, "^\\d+", negate = T),
@@ -18,10 +26,10 @@ sars2_fda <-   read_csv("results/sars2-summarized-dataset.csv") %>%
 ) %>%
   pull(compound)
 
-covidc <- read_csv("results/covidc-summarized-dataset.csv") %>%
+covidc <- read_csv("results/covidc-summarized-dataset.csv", col_types = col_spec) %>%
   pull(compound)
 
-covidc_fda <- read_csv("results/covidc-summarized-dataset.csv")  %>%
+covidc_fda <- read_csv("results/covidc-summarized-dataset.csv", col_types = col_spec)  %>%
   filter(str_detect(compound, "CHEMBL", negate = T),
          str_detect(compound, "SCHEMBL", negate = T),
          str_detect(compound, "^\\d+", negate = T),
@@ -35,10 +43,10 @@ covidc_fda <- read_csv("results/covidc-summarized-dataset.csv")  %>%
   ) %>%
   pull(compound)
 
-covidm <- read_csv("results/covidm-summarized-dataset.csv") %>%
+covidm <- read_csv("results/covidm-summarized-dataset.csv", col_types = col_spec) %>%
   pull(compound)
 
-covidm_fda <- read_csv("results/covidm-summarized-dataset.csv")  %>%
+covidm_fda <- read_csv("results/covidm-summarized-dataset.csv", col_types = col_spec)  %>%
   filter(str_detect(compound, "CHEMBL", negate = T),
          str_detect(compound, "SCHEMBL", negate = T),
          str_detect(compound, "^\\d+", negate = T),
