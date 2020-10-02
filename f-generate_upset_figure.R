@@ -91,3 +91,10 @@ upset(fromList(dataset_fda), nsets = length(dataset_fda),
       sets.x.label = "# of Identified Drugs",
       scale.intersections = "identity")
 dev.off()
+
+pdf("figures/sars2-china-mtsinai_comparison_upset.pdf", width = 10, height = 6.2)
+upset(fromList(dataset_fda), nsets = length(dataset_fda),
+      mainbar.y.label = "# of Common Drugs",
+      sets.x.label = "# of Identified Drugs",
+      scale.intersections = "identity")
+dev.off()
