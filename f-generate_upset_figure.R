@@ -71,10 +71,23 @@ dataset_unfiltered <- list(sars2 = sars2,
                            covidc = covidc,
                            covidm = covidm)
 
-dataset_fda <- list(sars2_fda = sars2_fda,
-                covidc_fda = covidc_fda,
-                covidm_fda = covidm_fda)
+dataset_fda <- list(`SARS-CoV2` = sars2_fda,
+                `China` = covidc_fda,
+                `Mt. Sinai` = covidm_fda)
 
-upset(fromList(dataset_all), nsets = length(dataset_all))
-upset(fromList(dataset_unfiltered), nsets = length(dataset_unfiltered))
-upset(fromList(dataset_fda), nsets = length(dataset_fda))
+#upset(fromList(dataset_all), nsets = length(dataset_all))
+#upset(fromList(dataset_unfiltered), nsets = length(dataset_unfiltered))
+
+png("figures/sars2-china-mtsinai_comparison_upset.png", width = 10, height = 6.2, units = "in", res = 300)
+upset(fromList(dataset_fda), nsets = length(dataset_fda),
+      mainbar.y.label = "# of Common Drugs",
+      sets.x.label = "# of Identified Drugs",
+      scale.intersections = "identity")
+dev.off()
+
+jpeg("figures/sars2-china-mtsinai_comparison_upset.jpeg", width = 10, height = 6.2, units = "in", res = 300)
+upset(fromList(dataset_fda), nsets = length(dataset_fda),
+      mainbar.y.label = "# of Common Drugs",
+      sets.x.label = "# of Identified Drugs",
+      scale.intersections = "identity")
+dev.off()
