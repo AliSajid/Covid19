@@ -16,8 +16,9 @@ los_group <- c("Losartan")
 
 all_groups <- list(quine_group, nib_group, vir_group, azt_group, los_group)
 
-sig_map_lists <- setdiff(list.files("maps"), list.files("maps", "Drug"))
+sig_map_lists <- setdiff(list.files("maps"), c(list.files("maps", "Drug"), list.files("maps", "csv")))
 sig_map_names <- str_match(sig_map_lists, "(.*)\\-Signature*")[,2]
+sig_map_names <- sig_map_names[!is.na(sig_map_names)]
 map_prefix <- "maps"
 
 maps <- lapply(file.path(map_prefix, sig_map_lists), read_tsv)

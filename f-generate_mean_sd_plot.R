@@ -73,8 +73,6 @@ p <- g + geom_point(size = 5) +
     legend.key.size = unit(1.5, "cm")
   )
 
-p
-
 full <- p + ggtitle("Concordance Plot of Identified Drugs")
 
 ggsave("figures/SARS2-Mean-SD-Plot.png", plot = full, device = "png", width = 11.69 * 2, height = 8.27 * 2, units = "in")

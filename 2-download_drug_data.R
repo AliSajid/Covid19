@@ -102,15 +102,14 @@ cutoffs <- c(0, 0.26, 0.5, 0.85, 1)
 
 sig_map_lists <- setdiff(list.files("maps"), list.files("maps", "Drug"))
 sig_map_names <- str_match(sig_map_lists, "(.*)\\-Signature*")[,2]
+sig_map_names <- sig_map_names[!is.na(sig_map_names)]
 map_prefix <- "maps"
 
 maps <- file.path(map_prefix, sig_map_lists)
+maps <- maps[str_detect(maps, "csv", negate = T)]
 names(maps) <- sig_map_names
 
-# ha1e <- sapply(cutoffs, process_seed_drugs, datafile = "maps/HA1E-Drug-Signature_Map.tsv", cell_line = "HA1E", library = "LIB_5")
-#
-# mcf7 <- sapply(cutoffs, process_seed_drugs, datafile = "maps/MCF7-Drug-Signature_Map.tsv", cell_line = "MCF7", library = "LIB_5")
-#
+
 a5491 <- sapply(cutoffs, process_seed_drugs, datafile = maps[sig_map_names[1]], cell_line = sig_map_names[1], library = "LIB_5")
 
 a5492 <- sapply(cutoffs, process_seed_drugs, datafile = maps[sig_map_names[2]], cell_line = sig_map_names[2], library = "LIB_5")
