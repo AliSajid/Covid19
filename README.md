@@ -1,5 +1,5 @@
 # Covid 19 Drug Discovery Repo
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3986979.svg)](https://doi.org/10.5281/zenodo.3986979)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3940096.svg)](https://doi.org/10.5281/zenodo.3940096)
 [![GitHub issues](https://img.shields.io/github/issues/AliSajid/Covid19)](https://github.com/AliSajid/Covid19/issues)
 [![GitHub forks](https://img.shields.io/github/forks/AliSajid/Covid19)](https://github.com/AliSajid/Covid19/network)
 [![GitHub stars](https://img.shields.io/github/stars/AliSajid/Covid19)](https://github.com/AliSajid/Covid19Covid19/stargazers)
