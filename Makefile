@@ -35,11 +35,13 @@ analyse: 5-*.R 6-*.R
 	$(RS) 5-generate_common_perturbagens_sars2.R
 	$(RS) 5-generate_common_perturbagens_covidc.R
 	$(RS) 5-generate_common_perturbagens_covidm.R
+	$(RS) 5-generate_common_perturbagens_ace2.R
 	$(RS) 6-generate_sars_sars2_combined_list.R
 	$(RS) 6-output_summarized_dataset_sars2.R
 	$(RS) 6-output_signature_normality.R
 	$(RS) 6-output_summarized_dataset_covidc.R
 	$(RS) 6-output_summarized_dataset_covidm.R
+	$(RS) 6-output_summarized_dataset_ace2.R
 	$(RS) 6-output_threshold_tables.R
 	$(RS) 6-output_disease_threshold_tables.R
 
