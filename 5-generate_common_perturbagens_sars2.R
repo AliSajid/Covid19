@@ -15,7 +15,7 @@ generate_common_perturbagens <-
       list.files(data_prefix, pattern = as.character(groups_thresh), full.names = T)
 
     outfile_prefix <- "results"
-    outfile_name <- paste(cell_line, disease_thresh, groups_thresh, "common", "filtered", sep = "-")
+    outfile_name <- paste(cell_line, disease, disease_thresh, groups_thresh, "common", "filtered", sep = "-")
     outfile <- generate_name(outfile_prefix, outfile_name, "csv")
 
     col_spec <- cols(
