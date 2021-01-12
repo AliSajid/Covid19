@@ -17,12 +17,15 @@ trial <- c("Gallocatechin Gallate", "Genistein", "Imatinib",
            "Dexamethasone Acetate", "Simvastatin", "Sirolimus",
            "Tamoxifen")
 
+key <- c("Gemcitabine", "Trametinib", "Withaferin A", "Saracatinib")
+
 data <-
-  read_csv("results/sars2-summarized-dataset.csv", col_types = col_spec) %>%
+  read_csv("results/ace2-summarized-dataset.csv", col_types = col_spec) %>%
   mutate(
     class = if_else((avg >= 0.5 & sdev <= 0.06), "novel", "filtered"),
     class = if_else(compound %in% antiviral, "antiviral", class),
     class = if_else(compound %in% trial, "trial", class),
+    class = if_else(compound %in% key, "key", class),
   ) %>%
   select(compound, avg, sdev, class) %>%
   filter(
@@ -45,21 +48,23 @@ p <- g + geom_point(size = 5) +
   scale_y_reverse(breaks = seq(0, 0.15, 0.01), limits = c(0.10, 0)) +
   geom_vline(xintercept = 0.5, color = "darkred", lwd = 1.5) +
   geom_hline(yintercept = 0.06, color = "darkred", lwd = 1.5) +
-  scale_color_manual(breaks = c("antiviral", "trial", "novel", "filtered"),
-                     labels = c("Known Anti-viral Properties",
+  scale_color_manual(breaks = c("key", "antiviral", "trial", "novel", "filtered"),
+                     labels = c("Key Recommendations",
+                       "Known Anti-viral Properties",
                                 "Currently in trial",
                                 "Novel identified",
                                 "Did not pass Threshold"),
                      name = "Drug Status",
-                     values = c("darkgreen", "maroon",
+                     values = c("darkred", "darkgreen", "maroon",
                                 "darkblue", "lightgrey")) +
-  scale_shape_manual(breaks = c("antiviral", "trial", "novel", "filtered"),
-                     labels = c("Known Anti-viral Properties",
+  scale_shape_manual(breaks = c("key", "antiviral", "trial", "novel", "filtered"),
+                     labels = c("Key Recommendations",
+                       "Known Anti-viral Properties",
                                 "Currently in trial",
                                 "Novel identified",
                                 "Did not pass Threshold"),
                      name = "Drug Status",
-                     values = c(17, 18, 15, 16)) +
+                     values = c(25, 17, 18, 15, 16)) +
   xlab("Mean Concordance") +
   ylab("Standard Deviation of Concordance") +
   theme_minimal() +
