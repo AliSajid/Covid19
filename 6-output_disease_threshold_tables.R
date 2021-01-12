@@ -4,7 +4,7 @@ library(tidyverse)
 
 data_dir <- file.path("data", "disease")
 
-diseases <- c("covidc", "covidm", "dA549_2")
+diseases <- c("covidc", "covidm", "dA549_2", "dACE2_4")
 
 consensus_dir <- "consensus"
 
