@@ -11,18 +11,19 @@ col_spec <- cols(
 
 antiviral <- c("Gemcitabine", "Trametinib", "Withaferin A", "Saracatinib",
                "Erlotinib", "Alvocidib", "Itrazole", "Elesclomol",
-               "Dasatinib", "Panobinostat")
+               "Dasatinib", "Panobinostat", "Parthenolide", "Lapatinib",
+               "Sorafenib", "Auranofin", "Selumetinib")
 
 trial <- c("Gallocatechin Gallate", "Genistein", "Imatinib",
            "Dexamethasone Acetate", "Simvastatin", "Sirolimus",
            "Tamoxifen")
 
-key <- c("Gemcitabine", "Trametinib", "Withaferin A", "Saracatinib")
+key <- c("Gemcitabine", "Trametinib", "Withaferin A", "Saracatinib", "Selumetinib", "Auranofin")
 
 data <-
   read_csv("results/ace2-summarized-dataset.csv", col_types = col_spec) %>%
   mutate(
-    class = if_else((avg >= 0.5 & sdev <= 0.06), "novel", "filtered"),
+    class = if_else((avg >= 0.47 & sdev <= 0.08), "novel", "filtered"),
     class = if_else(compound %in% antiviral, "antiviral", class),
     class = if_else(compound %in% trial, "trial", class),
     class = if_else(compound %in% key, "key", class),
@@ -46,8 +47,8 @@ g <- ggplot(data, aes(x = avg, y = sdev, group = class, color = class, shape = c
 p <- g + geom_point(size = 5) +
   scale_x_continuous(breaks = seq(0.32, 0.7, 0.02), limits = c(0.4, 0.7)) +
   scale_y_reverse(breaks = seq(0, 0.15, 0.01), limits = c(0.10, 0)) +
-  geom_vline(xintercept = 0.5, color = "darkred", lwd = 1.5) +
-  geom_hline(yintercept = 0.06, color = "darkred", lwd = 1.5) +
+  geom_vline(xintercept = 0.47, color = "darkred", lwd = 1.5) +
+  geom_hline(yintercept = 0.08, color = "darkred", lwd = 1.5) +
   scale_color_manual(breaks = c("key", "antiviral", "trial", "novel", "filtered"),
                      labels = c("Key Recommendations",
                        "Known Anti-viral Properties",

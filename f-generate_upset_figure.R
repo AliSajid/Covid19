@@ -9,10 +9,10 @@ col_spec <- cols(
   slog2 = col_double()
 )
 
-sars2 <- read_csv("results/sars2-summarized-dataset.csv", col_types = col_spec) %>%
+sars2 <- read_csv("results/ace2-summarized-dataset.csv", col_types = col_spec) %>%
   pull(compound)
 
-sars2_fda <-   read_csv("results/sars2-summarized-dataset.csv", col_types = col_spec) %>%
+sars2_fda <-   read_csv("results/ace2-summarized-dataset.csv", col_types = col_spec) %>%
   filter(str_detect(compound, "CHEMBL", negate = T),
                       str_detect(compound, "SCHEMBL", negate = T),
                       str_detect(compound, "^\\d+", negate = T),
@@ -71,9 +71,9 @@ dataset_unfiltered <- list(sars2 = sars2,
                            covidc = covidc,
                            covidm = covidm)
 
-dataset_fda <- list(`SARS-CoV2` = sars2_fda,
-                `China` = covidc_fda,
-                `Mt. Sinai` = covidm_fda)
+dataset_fda <- list(`GSE147507 CL` = sars2_fda,
+                `GSE145926` = covidc_fda,
+                `GSE147507 PS` = covidm_fda)
 
 #upset(fromList(dataset_all), nsets = length(dataset_all))
 #upset(fromList(dataset_unfiltered), nsets = length(dataset_unfiltered))
